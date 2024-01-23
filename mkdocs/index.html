@@ -113,6 +113,17 @@
 <h5 id="on-computer">on computer</h5>
 <pre><code class="language-bash">sudo apt install python3.10-venv #If python envvironment not installed
 git clone git@github.com:Gobiman/mkdocs-material.git  # clone the github repo created above
+git clone git@github.com:Gobiman/mkdocs-material.git  # clone the github repo created above
+cd &lt;folder&gt;
+python3 -m venv venv  #create python environment
+source venv/bin/activate # activate the environment
+pip --version
+pip install --upgrade pip  #upgrade pip if required
+pip3 install mkdocs
+code .  #Open in VScode or any editor 
+mkdocs new .  #will create mkdocs (mkdocs.yaml &amp; docs\index.md)
+mkdocs serve  #build and test the site on your machine
+mkdocs gh-deploy --force # deploys to gh-pages branch, e.g. site &quot;https://gobiman.github.io/door/&quot;
 </code></pre>
 <h5 id="on-computer_1">On computer</h5>
 <p>```bash title="clonning the repo and activiating the python env"
