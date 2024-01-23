@@ -1,0 +1,20 @@
+site_name: My Docs
+theme:
+  name: readthedocs
+  nav_style: dark
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - rust
+nav:
+  - 'index.md'
+  - 'about.md'
+  - 'powershell.md'
+  - 'certutil.md'
+  - 'chocolatey.md'
+not_in_nav: |
+  /private.md
+# use_directory_urls: true
+markdown_extensions:
+  - attr_list
+  - md_in_html
