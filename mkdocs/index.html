@@ -66,9 +66,7 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#create-a-repo-on-github">Create a repo on Github</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#on-computer">on computer</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#on-computer_1">On computer</a>
+    <li class="toctree-l2"><a class="reference internal" href="#on-computer">On computer</a>
     </li>
     </ul>
                 </li>
@@ -110,7 +108,7 @@
 <li>ignore python</li>
 <li>general licence</li>
 </ul>
-<h5 id="on-computer">on computer</h5>
+<h5 id="on-computer">On computer</h5>
 <pre><code class="language-bash">sudo apt install python3.10-venv #If python envvironment not installed
 git clone git@github.com:Gobiman/mkdocs-material.git  # clone the github repo created above
 git clone git@github.com:Gobiman/mkdocs-material.git  # clone the github repo created above
@@ -125,28 +123,12 @@ mkdocs new .  #will create mkdocs (mkdocs.yaml &amp; docs\index.md)
 mkdocs serve  #build and test the site on your machine
 mkdocs gh-deploy --force # deploys to gh-pages branch, e.g. site &quot;https://gobiman.github.io/door/&quot;
 </code></pre>
-<h5 id="on-computer_1">On computer</h5>
-<p>```bash title="clonning the repo and activiating the python env"
-sudo apt install python3.10-venv #If python envvironment not installed
-git clone git@github.com:Gobiman/mkdocs-material.git  # clone the github repo created above
-cd <folder>
-python3 -m venv venv  #create python environment 
-source venv/bin/activate # activate the envi
-pip --version
-pip install --upgrade pip  #upgrade pip if required
-pip --version
-pip3 install mkdocs
-code .  #Open in VScode or any editor 
-mkdocs new .  #will create mkdocs (mkdocs.yaml &amp; docs\index.md)
-mkdocs serve  #build and test the site on your machine
-mkdocs gh-deploy --force # deploys to gh-pages branch, e.g. site "https://gobiman.github.io/door/"</p>
-<pre><code>
-```bash title=&quot;git commands to sync to github repo&quot;
+<p>```bash title="git commands to sync to github repo"
 git add .
-git commit -m &quot;some informations&quot;
-git push origin main
-</code></pre>
-<pre><code class="language-bash">deactivate  # deactivate the enviornment once development is done
+git commit -m "some informations"
+git push origin main</p>
+<pre><code>```bash 
+deactivate  # deactivate the enviornment once development is done
 </code></pre>
               
             </div>
