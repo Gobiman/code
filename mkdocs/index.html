@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Certutil - My Docs</title>
+    <title>Mkdocs - My Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Certutil";
-        var mkdocs_page_input_path = "certutil.md";
+        var mkdocs_page_name = "Mkdocs";
+        var mkdocs_page_input_path = "mkdocs.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -53,16 +53,22 @@
                 <li class="toctree-l1"><a class="reference internal" href="../powershell/">PowerShell Cheat-Sheet</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Certutil</a>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../certutil/">Certutil</a>
                 </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../chocolatey/">Chocolatey</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../mkdocs/">Mkdocs</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Mkdocs</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#create-a-repo-on-github">Create a repo on Github</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#on-computer">On computer</a>
+    </li>
+    </ul>
                 </li>
               </ul>
       </div>
@@ -79,7 +85,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Certutil</li>
+      <li class="breadcrumb-item active">Mkdocs</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -88,15 +94,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <pre><code class="language-shell">`certutil -addstore -f &quot;ROOT&quot; new-root-certificate.crt`
-`certutil -delstore &quot;ROOT&quot; serial-number-hex`
+                <h4 id="requirements">Requirements</h4>
+<ul>
+<li>Python</li>
+<li>editor (vscode)</li>
+<li>github account</li>
+</ul>
+<h5 id="create-a-repo-on-github">Create a repo on Github</h5>
+<ul>
+<li>give a name</li>
+<li>public</li>
+<li>Create README.md file</li>
+<li>ignore python</li>
+<li>general licence</li>
+</ul>
+<h5 id="on-computer">On computer</h5>
+<p>``` bash title= 'clonning the repo and activiating the python env'
+sudo apt install python3.10-venv #If python envvironment not installed
+git clone git@github.com:Gobiman/mkdocs-material.git  # clone the github repo created above
+cd <folder>
+python3 -m venv venv  #create python environment 
+source venv/bin/activate # activate the envi
+pip --version
+pip install --upgrade pip  #upgrade pip if required
+pip --version
+pip3 install mkdocs
+code .  #Open in VScode or any editor 
+mkdocs new .  #will create mkdocs (mkdocs.yaml &amp; docs\index.md)
+mkdocs serve  #build and test the site on your machine
+mkdocs gh-deploy --force # deploys to gh-pages branch, e.g. site "https://gobiman.github.io/door/"</p>
+<pre><code>```bash title=&quot;git commands to sync to github repo&quot;
+git add .
+git commit -m &quot;some informations&quot;
+git push origin main
+</code></pre>
+<pre><code class="language-bash">deactivate  # deactivate the enviornment once development is done
 </code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../powershell/" class="btn btn-neutral float-left" title="PowerShell Cheat-Sheet"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../chocolatey/" class="btn btn-neutral float-right" title="Chocolatey">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../chocolatey/" class="btn btn-neutral float-left" title="Chocolatey"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
@@ -119,10 +157,8 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../powershell/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../chocolatey/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-    
-      <span><a href="../chocolatey/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
