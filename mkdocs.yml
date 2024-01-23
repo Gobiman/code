@@ -12,6 +12,7 @@ nav:
   - 'powershell.md'
   - 'certutil.md'
   - 'chocolatey.md'
+  - 'mkdocs.md'
 not_in_nav: |
   /private.md
 # use_directory_urls: true
