@@ -26,11 +26,13 @@ mkdocs new .  #will create mkdocs (mkdocs.yaml & docs\index.md)
 mkdocs serve  #build and test the site on your machine
 mkdocs gh-deploy --force # deploys to gh-pages branch, e.g. site "https://gobiman.github.io/door/"
 ```
-```bash title="git commands to sync to github repo"
+
+```bash
 git add .
 git commit -m "some informations"
 git push origin main
 ```
+
 ```bash 
 deactivate  # deactivate the enviornment once development is done
 ```
