@@ -46,19 +46,15 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../powershell/">PowerShell Cheat-Sheet</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../certutil/">certutil</a>
+                <li class="toctree-l1"><a class="reference internal" href="../certificate/">certificate</a>
                 </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../chocolatey/">Chocolatey</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../isilon/">isilon (powerscale)</a>
                 </li>
               </ul>
               <ul>
@@ -80,13 +76,21 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#check-client-tls-version-certificate">Check client TLS version &amp; certificate</a>
+    <li class="toctree-l2"><a class="reference internal" href="#check-client-tls-version-and-certificate-with-openssl">Check client TLS version and certificate with openssl</a>
     </li>
     </ul>
                 </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../openssh/">openssh</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../powershell/">PowerShell Cheat-Sheet</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
                 </li>
               </ul>
       </div>
@@ -165,7 +169,7 @@
 <pre><code class="language-bash">sudo openssl x509 -inform DER -in DER_cert.cer -out NEW_Cert_File_Name.crt
 </code></pre>
 <hr />
-<h3 id="check-client-tls-version-certificate">Check client TLS version &amp; certificate</h3>
+<h3 id="check-client-tls-version-and-certificate-with-openssl">Check client TLS version and certificate with openssl</h3>
 <pre><code class="language-bash">openssl s_client -connect bbc.co.uk:443
 echo | openssl s_client -connect bbc.co.uk:443 2&gt;/dev/null | openssl x509 -noout -dates #listing dates
 echo | openssl s_client -connect bbc.co.uk:443 2&gt;/dev/null | openssl x509 -text -noout | grep &quot;Public-Key&quot; #extract public key size

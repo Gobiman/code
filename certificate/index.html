@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>certificate - My Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "certificate";
+        var mkdocs_page_input_path = "certificate.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/rust.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> My Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Welcome to MkDocs</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">certificate</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ms-adcs-services-training">MS, ADCS services training</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configure-windows-certificate-servers-setting-up-a-crl">Configure windows certificate servers - setting up a CRL</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#list-of-technical-terminology-and-disambiguation">list of Technical Terminology and Disambiguation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#open-cert-manager-for-the-local-machine">open cert manager for the local machine</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#request-convert-certificate-extract-keys">Request, convert certificate &amp; extract keys</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#convert-binary-pfx-file-to-base64-cer-with-powershell">convert binary (pfx) file to Base64 (.cer) with powershell</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#convert-binary-cer-file-to-pem-file-which-is-ascii-file">convert Binary CER file to  *.PEM file which is ASCII file</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#convert-from-base64-to-binary">Convert from Base64 to Binary</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../chocolatey/">Chocolatey</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../isilon/">isilon (powerscale)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mkdocs/">Mkdocs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../openssl/">openssl</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../openssh/">openssh</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../powershell/">PowerShell Cheat-Sheet</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">My Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">certificate</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="certificate">certificate</h1>
+<p><strong>SSL certificates are X.509 Certificates</strong></p>
+<p>X.509 certificates are PKI-based certificates which works on the public key and private key infrastructure. </p>
+<p>certificates with extension .cer or .crt are the same.
+.cer and .cet extension are encoded in DER format or we can say they encoded with ASCII PEM format.</p>
+<p>DER formatted certificates are binary, therefore you can't see exactly what is written in those certificates you cannot as they are of the form 0s and 1s.</p>
+<p>Certificates that comes with .cer and .cet extensions are base 64 coded</p>
+<p>see <a href="../openssl/">openssl</a> for certificate conversation</p>
+<h4 id="ms-adcs-services-training"><a href="https://learn.microsoft.com/en-us/training/modules/implement-manage-active-directory-certificate-services/1-introduction">MS, ADCS services training</a></h4>
+<h4 id="configure-windows-certificate-servers-setting-up-a-crl">Configure windows certificate servers - setting up a CRL</h4>
+<p><a href="https://www.petenetlive.com/KB/Article/0000957">Configure Windows Certificate Services - Setting up a CRL </a>
+it explains why and how to setup CRL (Certificate Revocation List) </p>
+<h4 id="list-of-technical-terminology-and-disambiguation"><a href="https://www.petenetlive.com/kb/article/techterms">list of Technical Terminology and Disambiguation </a></h4>
+<p><a href="https://www.petenetlive.com/kb/article/techterms#CRL">CRL</a>= Certificate Revocation List: Is a list published by a <a href="http://www.petenetlive.com/KB/Article/TechTerms#CA">CA</a> for certificates that have been cancelled or revoked. 
+<a href="http://www.petenetlive.com/KB/Article/TechTerms#OCSP">OCSP protocol </a>= Online Certificate Status Protocol: Used by a <a href="http://www.petenetlive.com/KB/Article/TechTerms#CA">CA</a> to answer certificate revocation requests.</p>
+<h4 id="open-cert-manager-for-the-local-machine">open cert manager for the local machine</h4>
+<pre><code class="language-c">certlm
+</code></pre>
+<h4 id="request-convert-certificate-extract-keys">Request, convert certificate &amp; extract keys</h4>
+<pre><code class="language-powershell">#list template from CA
+certutil -dump | sls 'config:' # dump CA config
+certutil -CATemplates -config &lt;CA Enterprise machine&gt;
+
+</code></pre>
+<pre><code class="language-shell">certutil -addstore -f &quot;ROOT&quot; new-root-certificate.crt
+certutil -delstore &quot;ROOT&quot; serial-number-hex
+</code></pre>
+<p>In some remote access scenarios it is not possible to copy binary data (such as files) but you can copy\transfer plain text, Base64 is a better choice.</p>
+<h4 id="convert-binary-pfx-file-to-base64-cer-with-powershell">convert binary (pfx) file to Base64 (.cer) with powershell</h4>
+<pre><code class="language-powershell">Get-PfxCertificate -FilePath F:\Certs\ServerCerts\demosite.org.pfx | Export-Certificate -FilePath F:\Certs\ServerCerts\demosite.cer -Type CERT
+</code></pre>
+<h4 id="convert-binary-cer-file-to-pem-file-which-is-ascii-file">convert Binary CER file to  *.PEM file which is ASCII file</h4>
+<pre><code class="language-c">certutil.exe -encode .\demosite.cer demosite1.cer
+certutil -encode filename.cer newfilename.cer
+</code></pre>
+<h4 id="convert-from-base64-to-binary">Convert from Base64 to Binary</h4>
+<pre><code class="language-c">certutil -decode filename.cer newfilename.cer
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Welcome to MkDocs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../chocolatey/" class="btn btn-neutral float-right" title="Chocolatey">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../chocolatey/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

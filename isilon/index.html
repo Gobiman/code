@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>isilon (powerscale) - My Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "isilon (powerscale)";
+        var mkdocs_page_input_path = "isilon.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/rust.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> My Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Welcome to MkDocs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../certificate/">certificate</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../chocolatey/">Chocolatey</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">isilon (powerscale)</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#list-devices-adding-to-the-cluster">list devices &amp; adding to the cluster</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#replace-isilon-drive">Replace isilon drive</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#var-file-system-was-less-than-500mb">/VAR file system was less than 500MB</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#change-share-permissions-from-writeread-to-read-only">Change share permissions from Write\Read to Read only</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#smartfail-a-node">SmartFail  a node</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mkdocs/">Mkdocs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../openssl/">openssl</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../openssh/">openssh</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../powershell/">PowerShell Cheat-Sheet</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">My Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">isilon (powerscale)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="isilon-powerscale">isilon (powerscale)</h1>
+<pre><code class="language-bash">#list information for all nodes in the cluster
+isi_for_array -s isi_hw_status -i
+</code></pre>
+<pre><code class="language-bash">#list nodes serial number:     
+isi_for_array -s isi_hw_status -i | grep SerNo
+</code></pre>
+<pre><code class="language-bash">#get the Software ID (SWID) of the cluster
+isi license list | grep -i &quot;OneFS license&quot;
+</code></pre>
+<pre><code class="language-bash">#list drives that NOT healthy
+isi_for_array 'isi devices drive list|grep -v &quot;HEALTH\|L3\|EMPTY&quot;'|grep Bay
+</code></pre>
+<pre><code class="language-bash">#list drives status for node 30
+isi_for_array -n30 'isi devices drive list'
+</code></pre>
+<pre><code class="language-bash">#suspend sled B so disk can be replaced  for node 30
+isi_for_array -n30 'isi devices drive suspend --sled=B --force' 
+</code></pre>
+<pre><code class="language-bash">#list drives status for node 22
+isi_for_array -n22 'isi devices list'
+</code></pre>
+<pre><code class="language-bash">#version of OneFS
+isi version --format=list   
+</code></pre>
+<pre><code class="language-bash">#contact details 
+isi cluster contact view    
+</code></pre>
+<pre><code class="language-bash">#view esrs details
+isi esrs view
+</code></pre>
+<pre><code class="language-bash">#shutdown cluster\node
+isi cluster shutdown --node-lnn=NodeNumber\All 
+#OR
+isi config 
+shutdown
+</code></pre>
+<pre><code class="language-bash">#list IB status
+isi_for_array -s 'ibstat|grep State'
+</code></pre>
+<pre><code class="language-bash">#find drive that requires replacement
+isi_for_array 'isi device drive list|grep REPLACE'
+</code></pre>
+<pre><code class="language-bash">#list HW of the node
+isi_hw_status 
+#list HW status for the cluster
+isi_for_array isi_hw_status
+</code></pre>
+<pre><code class="language-bash">#Returns the product number of each node
+isi_for_array 'isi_hw_status | grep Product'
+</code></pre>
+<pre><code class="language-bash">#Checking usage
+isi quota quotas list | grep -i &lt;sharename&gt;
+du -Ash &lt;sharename&gt;
+</code></pre>
+<pre><code class="language-bash">#List Authentication provider
+isi_for_array -s 'isi auth status'|grep &lt;Domain Name&gt;|cut -c55-|sort|uniq -c
+</code></pre>
+<pre><code class="language-bash">#Enable/Disable synciqjobs
+isi sync policies list
+isi sync policies &lt;enable\disable&gt; --all
+isi sync policies list
+</code></pre>
+<h4 id="list-devices-adding-to-the-cluster">list devices &amp; adding to the cluster</h4>
+<pre><code class="language-bash"># Once nodes are labelled &amp; plugged in 
+isi devices node list
+isi device node add &lt;SERIAL NUMBER&gt; #SR of the nodes are labelled correctly.
+#Monitor join process:
+isi status -q
+</code></pre>
+<h4 id="replace-isilon-drive">Replace isilon drive</h4>
+<pre><code class="language-bash">#Login to the affected Node on which you facing the issue whilere placing drive .
+ssh node
+</code></pre>
+<pre><code class="language-bash">#show the unhealthy drive bay
+isi_for_array 'isi devices drive list|grep -v &quot;HEALTH\|L3\|EMPTY&quot;'|grep Bay
+</code></pre>
+<pre><code class="language-bash"># Manually suspend the SLED # 
+isi devices drive suspend --sled=&lt;affected sled &gt;
+</code></pre>
+<pre><code class="language-bash"># Verify the sled is suspended and drives are unmounted
+tail -f /var/log/isi_drive_d.log
+</code></pre>
+<pre><code class="language-bash"># Verify drives Sled / drives are Suspended
+isi devices drive list
+</code></pre>
+<pre><code class="language-bash">#Once the drive is replaced and the sled is re-seated, add the Sledback using below command .
+isi devices drive add --sled=&lt;affected sled &gt; 
+</code></pre>
+<pre><code class="language-bash"># Check the drive status
+isi devices drive list
+</code></pre>
+<pre><code class="language-bash"># if the disk is used\old, should require formatting
+isi devices drive format --node-lnn=&lt;Node_Number&gt; --bay=&lt;Bay_Number&gt;
+</code></pre>
+<pre><code class="language-bash"># After issuing upgrade command &amp; not sure if there is any progress activties 
+isi upgrade cluster nodes firmware progress list
+</code></pre>
+<h4 id="var-file-system-was-less-than-500mb">/VAR file system was less than 500MB</h4>
+<p>Reduce message log file to increase /var to &gt;500mb by using newsyslog command which maintain system log files to manageable sizes.</p>
+<pre><code class="language-bash"># newsyslog: Rotated log file /var/log/messages
+newsyslog -F /var/log/messages
+# then delete big old isi_tardis_d.log.&lt;nn&gt;.gz files
+</code></pre>
+<h4 id="change-share-permissions-from-writeread-to-read-only">Change share permissions from Write\Read to Read only</h4>
+<pre><code class="language-bash">ssh
+#Check domain users permission to TBM share:
+isi smb shares permission view &lt;shareName&gt; --group=&quot;DomainName\Domain Users&quot;
+##Change TBM smb share to read only for domain users:
+isi smb shares permission modify &lt;shareName&gt; --group=&quot;DomainName\Domain Users&quot; --permission=read --permission-type=allow
+##And check permissions afterwards:
+isi smb shares permission view &lt;shareName&gt; --group=&quot;DomainName\Domain Users&quot;
+</code></pre>
+<h4 id="smartfail-a-node">SmartFail  a node</h4>
+<pre><code class="language-bash">isi status -q
+isi job jobs list
+isi devices node smartfail --node-lnn=&lt;Node Name&gt;
+isi job jobs list
+isi jon jobs view &lt;Job Number&gt;
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../chocolatey/" class="btn btn-neutral float-left" title="Chocolatey"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../mkdocs/" class="btn btn-neutral float-right" title="Mkdocs">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../chocolatey/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../mkdocs/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
