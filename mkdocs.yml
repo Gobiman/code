@@ -13,6 +13,9 @@ nav:
   - 'certutil.md'
   - 'chocolatey.md'
   - 'mkdocs.md'
+  - 'openssl.md'
+  - 'openssh.md'
+
 not_in_nav: |
   /private.md
 # use_directory_urls: true

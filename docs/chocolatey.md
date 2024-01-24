@@ -4,7 +4,7 @@
 ([[tools/certutil|certutil]])
 ([[linux]])
 
-[certutil](/certutil)
+[certutil](certutil.md)
 
 Chocolatey is a machine-level, command-line package manager and installer for Windows software.
 
