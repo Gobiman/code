@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>openssl - My Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "openssl";
+        var mkdocs_page_input_path = "openssl.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/rust.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> My Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Welcome to MkDocs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../powershell/">PowerShell Cheat-Sheet</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../certutil/">certutil</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../chocolatey/">Chocolatey</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mkdocs/">Mkdocs</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">openssl</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#openssl-to-extraxt-certificate-file-private-key-from-pfx-file">openssl to extraxt certificate file &amp; private key from PFX file</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#another-method-extracting-certificate-keys">Another method, extracting Certificate &amp; keys</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#convert-using-openssl-command">Convert using openssl command</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#if-the-certificate-file-base64-cer-extension-which-is-pem-format">If the certificate file Base64 (.cer extension) which is PEM format</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#if-the-certificate-file-in-der-format-cer-extension">If the certificate file in DER format (.cer extension)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#check-client-tls-version-certificate">Check client TLS version &amp; certificate</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../openssh/">openssh</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">My Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">openssl</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="openssl">openssl</h1>
+<p>openssl command makes is easier to manipulate certificates.</p>
+<p><a href="https://openssl.org">OpenSSL site</a></p>
+<p><strong><em>DER</em></strong> encoded binary X.509(.CER) is called <strong><em>D</em></strong>istinguished <strong><em>E</em></strong>ncoding <strong><em>R</em></strong>ules which is a binary format.
+<strong><em>Base64</em></strong> which is an encoding method that converts binary data to plain ASCII text.</p>
+<p>The <em>.CER extension is interchangeable with </em>.CRT</p>
+<p>Sometimes,</p>
+<ul>
+<li>DER certificate have *.der extension</li>
+<li>Base64 have *.pem extension</li>
+</ul>
+<p>Open in text editor</p>
+<ul>
+<li>DER gibberish</li>
+<li>Base64 ASCII code</li>
+</ul>
+<h4 id="openssl-to-extraxt-certificate-file-private-key-from-pfx-file">openssl to extraxt certificate file &amp; private key from PFX file</h4>
+<ul>
+<li>Make PFX file from install certificate on Windows system</li>
+<li>copy it to Linux machine</li>
+<li>Create the cert file </li>
+</ul>
+<pre><code class="language-bash">sudo openssl pkcs12 -in &lt;pfx_filename.pfx&gt; -out certificate.crt -nokeys 
+</code></pre>
+<ul>
+<li>creates private key</li>
+</ul>
+<pre><code class="language-bash">sudo openssl pkcs12 -in certificate.p12 -out privateKey.key -nodes -nocertsopenssl pkcs12 -in certificate.p12 -out privateKey.key -nodes -nocerts
+</code></pre>
+<p><a href="https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fsslhow.com%2Fopenssl-pkcs12&amp;data=05%7C01%7CE.Aziz%40soton.ac.uk%7C4062f2e9744b4ddcc7db08dab381c414%7C4a5378f929f44d3ebe89669d03ada9d8%7C0%7C0%7C638019667157725226%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=g6BQimcmJYlNbEQTk5cyXuMIg211xkNyhO%2F1TOBPv0Q%3D&amp;reserved=0" title="Original URL: https://sslhow.com/openssl-pkcs12. Click or tap if you trust this link.">https://sslhow.com/openssl-pkcs12</a></p>
+<h4 id="another-method-extracting-certificate-keys">Another method, extracting Certificate &amp; keys</h4>
+<ul>
+<li>extract private key (Encrypted)</li>
+</ul>
+<pre><code class="language-bash">sudo openssl pkcs12 -in &lt;pfx_filename.pfx&gt; -nocerts -out &lt;keyfilename-encrypted.key&gt;
+</code></pre>
+<p>- Extract certificate from pfx file</p>
+<pre><code class="language-bash">sudo openssl pkcs12 -in pfx_filename.pfx -clcerts -nokeys -out &lt;certifcate_file_name&gt;.crt
+</code></pre>
+<ul>
+<li>Extract private Unencrypted format from Encrypted private key file</li>
+</ul>
+<pre><code class="language-bash">sudo openssl rsa -in keyfilename-encrypted.key -out keyfilename-decrypted.key
+</code></pre>
+<p><a href="https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fbobcares.com%2Fblog%2Fconvert-pfx-to-crt-key-files%2F&amp;data=05%7C01%7CE.Aziz%40soton.ac.uk%7C4062f2e9744b4ddcc7db08dab381c414%7C4a5378f929f44d3ebe89669d03ada9d8%7C0%7C0%7C638019667157725226%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=04ReTHk1rwYRBG6e%2B7fYiGnFHRr81YNDVFjheB%2FZXrY%3D&amp;reserved=0" title="Original URL: https://bobcares.com/blog/convert-pfx-to-crt-key-files/. Click or tap if you trust this link.">https://bobcares.com/blog/convert-pfx-to-crt-key-files/</a></p>
+<h3 id="convert-using-openssl-command">Convert using openssl command</h3>
+<h4 id="if-the-certificate-file-base64-cer-extension-which-is-pem-format">If the certificate file Base64 (.cer extension) which is PEM format</h4>
+<pre><code class="language-bash">sudo openssl x509 -inform PEM -in BASE64_cert.cer -out NEW_Cert_File_Name.crt
+</code></pre>
+<h4 id="if-the-certificate-file-in-der-format-cer-extension">If the certificate file in DER format (.cer extension)</h4>
+<pre><code class="language-bash">sudo openssl x509 -inform DER -in DER_cert.cer -out NEW_Cert_File_Name.crt
+</code></pre>
+<hr />
+<h3 id="check-client-tls-version-certificate">Check client TLS version &amp; certificate</h3>
+<pre><code class="language-bash">openssl s_client -connect bbc.co.uk:443
+echo | openssl s_client -connect bbc.co.uk:443 2&gt;/dev/null | openssl x509 -noout -dates #listing dates
+echo | openssl s_client -connect bbc.co.uk:443 2&gt;/dev/null | openssl x509 -text -noout | grep &quot;Public-Key&quot; #extract public key size
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../mkdocs/" class="btn btn-neutral float-left" title="Mkdocs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../openssh/" class="btn btn-neutral float-right" title="openssh">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../mkdocs/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../openssh/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Certutil - My Docs</title>
+    <title>certutil - My Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Certutil";
+        var mkdocs_page_name = "certutil";
         var mkdocs_page_input_path = "certutil.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,7 +54,19 @@
                 </li>
               </ul>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Certutil</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">certutil</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#open-cert-manager-for-the-local-machine">open cert manager for the local machine</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#request-convert-certificate-extract-keys">Request, convert certificate &amp; extract keys</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#convert-binary-pfx-file-to-base64-cer-with-powershell">convert binary (pfx) file to Base64 (.cer) with powershell</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#convert-binary-cer-file-to-pem-file-which-is-ascii-file">convert Binary CER file to  *.PEM file which is ASCII file</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#convert-from-base64-to-binary">Convert from Base64 to Binary</a>
+    </li>
+    </ul>
                 </li>
               </ul>
               <ul>
@@ -63,6 +75,14 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../mkdocs/">Mkdocs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../openssl/">openssl</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../openssh/">openssh</a>
                 </li>
               </ul>
       </div>
@@ -79,7 +99,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Certutil</li>
+      <li class="breadcrumb-item active">certutil</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -88,8 +108,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <pre><code class="language-shell">`certutil -addstore -f &quot;ROOT&quot; new-root-certificate.crt`
-`certutil -delstore &quot;ROOT&quot; serial-number-hex`
+                <h1 id="certutil">certutil</h1>
+<h4 id="open-cert-manager-for-the-local-machine">open cert manager for the local machine</h4>
+<pre><code class="language-c">certlm
+</code></pre>
+<h4 id="request-convert-certificate-extract-keys">Request, convert certificate &amp; extract keys</h4>
+<pre><code class="language-powershell">#list template from CA
+certutil -dump | sls 'config:' # dump CA config
+certutil -CATemplates -config &lt;CA Enterprise machine&gt;
+
+</code></pre>
+<pre><code class="language-shell">certutil -addstore -f &quot;ROOT&quot; new-root-certificate.crt
+certutil -delstore &quot;ROOT&quot; serial-number-hex
+</code></pre>
+<p>In some remote access scenarios it is not possible to copy binary data (such as files) but you can copy\transfer plain text, Base64 is a better choice.</p>
+<h4 id="convert-binary-pfx-file-to-base64-cer-with-powershell">convert binary (pfx) file to Base64 (.cer) with powershell</h4>
+<pre><code class="language-powershell">Get-PfxCertificate -FilePath F:\Certs\ServerCerts\demosite.org.pfx | Export-Certificate -FilePath F:\Certs\ServerCerts\demosite.cer -Type CERT
+</code></pre>
+<h4 id="convert-binary-cer-file-to-pem-file-which-is-ascii-file">convert Binary CER file to  *.PEM file which is ASCII file</h4>
+<pre><code class="language-c">certutil.exe -encode .\demosite.cer demosite1.cer
+certutil -encode filename.cer newfilename.cer
+</code></pre>
+<h4 id="convert-from-base64-to-binary">Convert from Base64 to Binary</h4>
+<pre><code class="language-c">certutil -decode filename.cer newfilename.cer
 </code></pre>
               
             </div>

@@ -4,21 +4,21 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Bash - My Docs</title>
-    <link rel="stylesheet" href="../../css/theme.css" />
-    <link rel="stylesheet" href="../../css/theme_extra.css" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>openssh - My Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Bash";
-        var mkdocs_page_input_path = "images/Bash.md";
+        var mkdocs_page_name = "openssh";
+        var mkdocs_page_input_path = "openssh.md";
         var mkdocs_page_url = null;
       </script>
     
     <!--[if lt IE 9]>
-      <script src="../../js/html5shiv.min.js"></script>
+      <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
@@ -32,9 +32,9 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> My Docs
+          <a href=".." class="icon icon-home"> My Docs
         </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -42,27 +42,39 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../..">Welcome to MkDocs</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">Welcome to MkDocs</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../powershell/">PowerShell Cheat-Sheet</a>
+                <li class="toctree-l1"><a class="reference internal" href="../powershell/">PowerShell Cheat-Sheet</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../certutil/">Certutil</a>
+                <li class="toctree-l1"><a class="reference internal" href="../certutil/">certutil</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../chocolatey/">Chocolatey</a>
+                <li class="toctree-l1"><a class="reference internal" href="../chocolatey/">Chocolatey</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../mkdocs/">Mkdocs</a>
+                <li class="toctree-l1"><a class="reference internal" href="../mkdocs/">Mkdocs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../openssl/">openssl</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">openssh</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#using-the-ssh-config-file">Using the SSH Config File</a>
+    </li>
+    </ul>
                 </li>
               </ul>
       </div>
@@ -72,14 +84,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">My Docs</a>
+          <a href="..">My Docs</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Bash</li>
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">openssh</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -88,11 +100,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>![[Bash cheat Sheet01.png]]
-![[Windows Security Log Quick Reference.png]]</p>
+                <h1 id="openssh">openssh</h1>
+<pre><code class="language-bash"># remove Entry from the Known-Hosts File
+ssh-keygen -R hostname
+</code></pre>
+<h4 id="using-the-ssh-config-file">Using the SSH Config File</h4>
+<p>If you are regularly connecting to multiple remote systems over SSH, you can configure your remote servers with the <code>.ssh/config</code> file.</p>
+<p><strong>Example:</strong>*</p>
+<pre><code class="language-ini">Host dev
+    HostName dev.your-domain
+    User xcad
+    Port 7654
+    IdentityFile ~/.ssh/targaryen.key
+
+Host *
+    User root
+    Compression yes
+</code></pre>
+<p>Connect to a host (like <em>dev</em> , eg.) with <code>ssh dev</code>.</p>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../openssl/" class="btn btn-neutral float-left" title="openssl"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
 
   <hr/>
 
@@ -114,14 +145,16 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../openssl/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
     
   </span>
 </div>
-    <script src="../../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "../..";</script>
-    <script src="../../js/theme_extra.js"></script>
-    <script src="../../js/theme.js"></script>
-      <script src="../../search/main.js"></script>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
     <script>
         jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);
