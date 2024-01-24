@@ -137,6 +137,7 @@ venv.bak/
 
 # mkdocs documentation
 /site
+/docs/sofar.md
 
 # mypy
 .mypy_cache/
