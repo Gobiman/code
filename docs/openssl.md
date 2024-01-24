@@ -65,7 +65,7 @@ sudo openssl x509 -inform DER -in DER_cert.cer -out NEW_Cert_File_Name.crt
 ```
 **********************
 
-### Check client TLS version & certificate 
+### Check client TLS version and certificate with openssl
 
 ```bash
 openssl s_client -connect bbc.co.uk:443

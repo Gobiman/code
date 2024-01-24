@@ -8,15 +8,18 @@ theme:
     - rust
 nav:
   - 'index.md'
-  - 'about.md'
-  - 'powershell.md'
-  - 'certutil.md'
+  - 'certificate.md'
   - 'chocolatey.md'
+  - 'isilon.md'
   - 'mkdocs.md'
   - 'openssl.md'
   - 'openssh.md'
+  - 'powershell.md'
+  - 'about.md'
+  
 
 not_in_nav: |
+  - sofar.md 
   /private.md
 # use_directory_urls: true
 markdown_extensions:

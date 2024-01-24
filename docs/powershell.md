@@ -55,7 +55,6 @@ str = str.encode('utf-8', 'strict');
 print ("Encoded String: ", str)
 str = str.decode('utf-8', 'strict')
 print ("Decoded String: ", str)
-
 ```
 
 
@@ -65,7 +64,7 @@ https://learn.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everythi
 
 See my [About](about.md) page for details.
 
-At the same time you could see [certutil](certutil.md)
+At the same time you could see [certificate](certificate.md)
 
 <!-- images/linux-file-system.jpg -->
 <!-- ![alt text](linux-file-system.jpg "Title") -->
