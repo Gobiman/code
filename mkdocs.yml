@@ -1,7 +1,10 @@
 site_name: My Docs
 theme:
-  name: readthedocs
+  name: material
   nav_style: dark
+  features:
+    - content.code.copy
+    - content.code.select
   highlightjs: true
   hljs_languages:
     - yaml
@@ -16,12 +19,11 @@ nav:
   - 'openssh.md'
   - 'powershell.md'
   - 'about.md'
-  
-
-not_in_nav: |
-  - sofar.md 
+not_in_nav:  
   /private.md
 # use_directory_urls: true
+
 markdown_extensions:
   - attr_list
   - md_in_html
+  - admonition
