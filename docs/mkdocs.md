@@ -2,6 +2,7 @@
 * Python
 * editor (vscode)
 * github account
+* [mkdocs material](https://squidfunk.github.io/mkdocs-material/)
 
 ##### Create a repo on Github
  - give a name
