@@ -14,11 +14,13 @@ nav:
   - 'certificate.md'
   - 'chocolatey.md'
   - 'isilon.md'
-  - 'mkdocs.md'
+  - 'linux.md'
+  - 'mkdocs.md'  
   - 'openssl.md'
   - 'openssh.md'
   - 'powershell.md'
   - 'about.md'
+  
 not_in_nav:  
   /private.md
 # use_directory_urls: true
