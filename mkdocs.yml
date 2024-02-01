@@ -13,6 +13,7 @@ nav:
   - 'index.md'
   - 'certificate.md'
   - 'chocolatey.md'
+  - 'git.md'
   - 'isilon.md'
   - 'linux.md'
   - 'mkdocs.md'  
