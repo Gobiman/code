@@ -1,10 +1,10 @@
-# PowerShell Cheat-Sheet
+# PowerShell 
 PowerShell is a task automation and configuration management program from Microsoft, consisting of a command-line shell and the associated scripting language.
 
-## Install PowerShell
+###### Install PowerShell
 PowerShell was made open-source and cross-platform with PowerShell Core, and can be installed on multiple operating systems.
 
-### Windows
+###### Windows
 1. Download MSI Package from the [Official PowerShell Docs](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2)
 2. Set up PowerShell Profile in Windows Terminal ([[windows-terminal]]).
 ```json
@@ -13,7 +13,7 @@ PowerShell was made open-source and cross-platform with PowerShell Core, and can
 "source": "Windows.Terminal.PowershellCore"
 ```
 
-### Linux (Ubuntu)
+###### Linux (Ubuntu)
 ```bash
 # Update the list of packages
     sudo apt-get update
@@ -31,16 +31,17 @@ PowerShell was made open-source and cross-platform with PowerShell Core, and can
     pwsh
 ```
 
-## Profile
-Set up a PowerShell Profile by opening the profile script :
+###### Profile
+
 ```powershell
+#set up a PowerShell Profile by opening the profile script
 code $PROFILE
 ```
 
-### (Optional) Set up starship Prompt
+###### (Optional) Set up starship Prompt
 You can customise the look and feel of PowerShell with the Starship Prompt ([[starship]]).
 
-### Run PowerShell script under python
+###### Run PowerShell script under python
 ```python
 ## use powershell script in Python
 import subprocess
@@ -70,5 +71,4 @@ At the same time you could see [certificate](certificate.md)
 <!-- ![alt text](linux-file-system.jpg "Title") -->
 <!-- ![Alt text](images/linux-file-system.jpg) -->
 <!-- <img src="/docs/docs/images/linux-file-system.jpg"> -->
-![Linux file system](images/linux-file-system.jpg){align=right}
 ![Windows security log quick reference](images/Windows Security Log Quick Reference.jpg){align=midlle}
