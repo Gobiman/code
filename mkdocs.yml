@@ -20,6 +20,7 @@ nav:
   - 'openssl.md'
   - 'openssh.md'
   - 'powershell.md'
+  - 'screen.md'
   - 'about.md'
   
 not_in_nav:  
