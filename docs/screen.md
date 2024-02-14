@@ -1,5 +1,7 @@
 # screen 
-allows you to run multiple terminal applications 
+[linux](linux.md) command that allows you to run multiple terminal applications 
+
+##### basic screen commands
 ```bash
 screen -ls # list running screens 
 screen -list 
