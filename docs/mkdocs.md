@@ -13,18 +13,25 @@
 
 ##### On computer
 ```bash
-sudo apt install python3.10-venv #If python envvironment not installed
-git clone git@github.com:Gobiman/mkdocs-material.git  # clone the github repo created above
-git clone git@github.com:Gobiman/mkdocs-material.git  # clone the github repo created above
+#If python envvironment not installed
+sudo apt install python3.10-venv 
+# clone the github repo created above
+git clone git@github.com:Gobiman/mkdocs-material.git  
 cd <folder>
-python3 -m venv venv  #create python environment
-source venv/bin/activate # activate the environment
+#create python environment
+python3 -m venv venv  
+# activate the environment
+source venv/bin/activate 
 pip --version
-pip install --upgrade pip  #upgrade pip if required
+#upgrade pip if required
+pip install --upgrade pip  
 pip3 install mkdocs
-code .  #Open in VScode or any editor 
-mkdocs new .  #will create mkdocs (mkdocs.yaml & docs\index.md)
-mkdocs serve  #build and test the site on your machine
+#Open in VScode or any editor
+code .   
+#will create mkdocs (mkdocs.yaml & docs\index.md)
+mkdocs new .  
+#build and test the site on your machine
+mkdocs serve 
 # deploys to gh-pages branch, e.g. site "https://gobiman.github.io/door/"
 mkdocs gh-deploy --force 
 ```
@@ -36,5 +43,6 @@ git push origin main
 ```
 
 ```bash 
-deactivate  # deactivate the enviornment once development is done
+# deactivate the enviornment once development is done
+deactivate  
 ```
