@@ -25,7 +25,8 @@ pip3 install mkdocs
 code .  #Open in VScode or any editor 
 mkdocs new .  #will create mkdocs (mkdocs.yaml & docs\index.md)
 mkdocs serve  #build and test the site on your machine
-mkdocs gh-deploy --force # deploys to gh-pages branch, e.g. site "https://gobiman.github.io/door/"
+# deploys to gh-pages branch, e.g. site "https://gobiman.github.io/door/"
+mkdocs gh-deploy --force 
 ```
 
 ```bash
